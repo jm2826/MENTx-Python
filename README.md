@@ -14,4 +14,4 @@ This course below can be found on Coursera. This is a very laid back course (on 
 <br>**Machine Learning with TensorFlow on Google Cloud Platform Specialization**
 
 Others:
-[Python Official Tutorial](https://docs.python.org/3/tutorial/)
+- [Python Official Tutorial](https://docs.python.org/3/tutorial/)
