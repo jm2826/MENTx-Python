@@ -22,6 +22,28 @@ Run jupter notebook from command line / terminal
 
 Select any of the .ipynb files
 
+## Milestones
+1) Linked Lists
+2) Stacks
+3) Queues
+4) Maps (known as Dictionaries in Python)
+5) Sorting / Searching
+6) Recursion
+7) Computer Science Interview Process
+8) Time and Space Complexity
+9) Dynamic Programming
+10) Graphs
+11) Trees
+  - DFS
+  - BFS
+12) Numpy
+13) Pandas
+14) Data Visualization
+15) Machine Learnine
+16) Flask
+17) Web Application Deployment
+18) Project
+
 ## Resources
 This is my go to for syntax and simple things that I may have forgotten. I would recommend starting here.
 <br>https://www.w3schools.com/python/default.asp
