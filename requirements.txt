@@ -6,3 +6,5 @@ seaborn
 notebook
 scikit-learn
 nltk
+flask
+gunicorn
