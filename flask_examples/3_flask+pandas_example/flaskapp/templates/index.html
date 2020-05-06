@@ -1,0 +1,14 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Index Page</title>
+</head>
+
+<body>
+  <h1>The index.html page</h1>  
+  {% for table in tables %}
+    {{ table|safe }}
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tweets</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {background-color: #eee;}
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Tweet Aggression Project</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="https://github.com/kevinlwebb/TwitterAggressionProject" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">Tweet Aggression Project</h1>
+        <p class="text-center">Analyzing Twitter data for aggression response</p>
+        <hr />
+      
+        <div class="row">
+            <div class="col-lg-12 form-group-lg">
+                <form action="/go" method="get">
+                    <input type="text" class="form-control form-control-lg" name="query" placeholder="Enter a tweet to classify">
+                    <div style="text-align: center; padding-top: 25px;">
+                        <button type="submit" class="btn btn-lg btn-success">Classify Tweet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% block message %}
+        {% endblock %}
+    </div>
+</div>
+
+{% block content %}
+<div class="container" style="background-color: white;">
+
+    <h1 class="text-center">Tweet Example</h1>
+
+    <blockquote class="twitter-tweet tw-align-center">
+        <p lang="en" dir="ltr">CRASS ALERT:<br><br>Alexandria Ocasio-Cortez can eat my asshole.</p>&mdash; HornsFan29 (@HornsFan29) <a href="https://twitter.com/HornsFan29/status/1252367185772638210?ref_src=twsrc%5Etfw">April 20, 2020</a>
+    </blockquote> 
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <h4 class="text-center" style="padding-top: 20px;">CLASSIFICATION</h4>
+    <h1 class="text-center" style="color: red; padding: 10px;">Bad Tweet</h1>
+
+</div>
+
+<br>
+
+<div class="container" style="background-color: white;">
+
+    <h1 class="text-center">Overview of Training Dataset</h1>
+
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+    }
+</script>
+
+</body>
+</html>

@@ -8,3 +8,4 @@ scikit-learn
 nltk
 flask
 gunicorn
+sqlalchemy

@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+    <hr>
+    {% if classification_result.result == '1' %}
+        <h1 class="text-center" style="color: red; padding: 30px;">Bad Tweet</h1>
+    {% else %}
+        <h1 class="text-center" style="color: green; padding: 30px;">Good Tweet</h1>
+    {% endif %}
+    <h4 class="text-center">MESSAGE</h4>
+    <p class="text-center"><i>{{query}}</i></p>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
