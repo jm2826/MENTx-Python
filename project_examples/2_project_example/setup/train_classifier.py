@@ -28,11 +28,20 @@ def load_data(database_filepath):
 
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table('prices', engine)
-    df.reset_index(drop=True, inplace=True)
+
     # Remove rows with missing target
     df.dropna(axis=0, subset=['SalePrice'], inplace=True)
+
+    # Reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # Replace (possible) None types with np.NaN
+    df.fillna(value=pd.np.nan, inplace=True)
+    
     Y = df.SalePrice         
     X = df.drop(['SalePrice'], axis=1)
+    X = X[["LotArea"]]
+    
     return X, Y
 
 
@@ -116,11 +125,11 @@ def main():
         
         # "Cardinality" means the number of unique values in a column
         # Select categorical columns with relatively low cardinality (convenient but arbitrary)
-        categorical_cols = [cname for cname in X_train_full.columns if X_train_full[cname].nunique() < 10 and 
+        categorical_cols = [str(cname) for cname in X_train_full.columns if X_train_full[cname].nunique() < 10 and 
                                 X_train_full[cname].dtype == "object"]
 
         # Select numeric columns
-        numerical_cols = [cname for cname in X_train_full.columns if X_train_full[cname].dtype in ['int64', 'float64']]
+        numerical_cols = [str(cname) for cname in X_train_full.columns if X_train_full[cname].dtype in ['int64', 'float64']]
 
         # Keep selected columns only
         my_cols = categorical_cols + numerical_cols

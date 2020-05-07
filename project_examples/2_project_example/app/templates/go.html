@@ -3,11 +3,7 @@
 
 {% block message %}
     <hr>
-    {% if classification_result.result == '1' %}
-        <h1 class="text-center" style="color: red; padding: 30px;">Bad Tweet</h1>
-    {% else %}
-        <h1 class="text-center" style="color: green; padding: 30px;">Good Tweet</h1>
-    {% endif %}
+    <h1 class="text-center" style="padding: 30px;">${{"%.2f"|format(classification_result.result|float)}}</h1>
     <h4 class="text-center">MESSAGE</h4>
     <p class="text-center"><i>{{query}}</i></p>
 {% endblock %}
