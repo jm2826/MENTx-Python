@@ -9,3 +9,4 @@ nltk
 flask
 gunicorn
 sqlalchemy
+beautifulsoup4
