@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block title %}Welcome Page{% endblock %}
+{% block header %}Welcome to the Welcome Page{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  <a href="{{ url_for( 'index' ) }}" class="btn btn-primary">Home</a>
+</div>
+<div class="container">
+  <p>My string: {{my_string}}</p>
+  <p>Third value from the list using <code>my_list[3]</code>: {{my_list[3]}}</p>
+  <p>Loop through the list:</p>
+  <ul>
+    {% for n in my_list %}
+    <li>{{n}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

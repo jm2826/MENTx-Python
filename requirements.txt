@@ -1,6 +1,12 @@
 numpy
 pandas
+requests
 matplotlib
 seaborn
 notebook
 scikit-learn
+nltk
+flask
+gunicorn
+sqlalchemy
+beautifulsoup4
